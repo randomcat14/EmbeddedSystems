@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Home</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0"></script>
+</head>
+
+<body class="bg-page">
+  
+
+  <section class="main-section">
+    <button id = "LogOut" onclick="location.href='login.html'">LogOut</button>
+
+    <section class="box">
+      <div class="header">
+        <h1>Your House</h1>
+      </div>
+      <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+    </section>
+
+    <section class="box">
+      <div class="header">
+        <h1>Control</h1>
+      </div>
+
+      <div class="toggle-list">
+        <div class="toggle-item">
+          <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+          </label>
+          <span class="toggle-label">RTOS Enabled</span>
+        </div>
+      </div>
+    </section>
+    <section class="box">
+      <div class="header">
+        <h1>Notification Settings</h1>
+      </div>
+
+<div class="toggle-item">
+  <label class="switch">
+    <input type="checkbox" id="toggle-spike">
+    <span class="slider round"></span>
+  </label>
+  <span class="toggle-label">Spike</span>
+</div>
+
+        <div class="toggle-item">
+          <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+          </label>
+          <span class="toggle-label">Temperature Warning</span>
+        </div>
+
+        <div class="toggle-item">
+          <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+          </label>
+          <span class="toggle-label">Voltage Drop</span>
+        </div>
+
+        <div class="toggle-item">
+          <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+          </label>
+          <span class="toggle-label">System Alert</span>
+        </div>
+      </div>
+    </section>
+  
+
+  </section>
+
+  <script src="graph.js"></script>
+  <script src="enotif.js"></script>
+</body>
+
+
+</html>
