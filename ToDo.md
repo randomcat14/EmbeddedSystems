@@ -1,7 +1,7 @@
 ## ToDo
 
 ### FrontEnd
-Set up secure way to upload nad use .env and API key
+- [ ]Set up secure way to upload nad use .env and API key
 Test secure setup
 Create real-time graph
 Set up axes for real time graph
