@@ -1,0 +1,2 @@
+../Core/Src/Tasks.c:23:6:TimerISR	24	static
+../Core/Src/Tasks.c:34:5:TempSensor	88	static

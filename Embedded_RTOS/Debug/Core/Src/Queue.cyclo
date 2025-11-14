@@ -1,0 +1,6 @@
+../Core/Src/Queue.c:17:6:Q4ucInit	1
+../Core/Src/Queue.c:21:15:Q4ucFull	1
+../Core/Src/Queue.c:25:15:Q4ucEmpty	1
+../Core/Src/Queue.c:29:6:Q4ucPrint	2
+../Core/Src/Queue.c:41:6:Q4ucPush	2
+../Core/Src/Queue.c:51:15:Q4ucPop	3

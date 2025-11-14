@@ -1,0 +1,2 @@
+../Core/Src/Tasks.c:23:6:TimerISR	3
+../Core/Src/Tasks.c:34:5:TempSensor	5
