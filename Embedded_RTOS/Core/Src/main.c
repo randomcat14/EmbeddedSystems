@@ -84,7 +84,7 @@ int main(void)
 
 	Q4ucInit(&sharedQueue);
 
-	//tasks 1 is the fan
+	//tasks 1 is the fan [1] same as zybooks
 
 
 
@@ -112,7 +112,7 @@ int main(void)
   MX_TIM6_Init();
   MX_TIM7_Init();
   /* USER CODE BEGIN 2 */
-  HAL_TIM_Base_Start(&htim6); // setting up the timer
+  HAL_TIM_Base_Start(&htim6); // setting up the timer for dht11
   HAL_TIM_Base_Start_IT(&htim7); // interrupt timer
   dht11_init(GPIOA, GPIO_PIN_1, &htim6); // setting up the dht11 sensor
 
@@ -337,6 +337,7 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+// timer 7 gloabl interrupt right now it sets a flag for the main loop.
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
     if (htim->Instance == TIM7)   // Check which timer fired

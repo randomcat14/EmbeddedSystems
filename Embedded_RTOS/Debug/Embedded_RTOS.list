@@ -37,15 +37,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  16 .debug_macro  00023310  00000000  00000000  0001be91  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   00010b37  00000000  00000000  0003f1a1  2**0
+ 17 .debug_line   00010b35  00000000  00000000  0003f1a1  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    000d2d19  00000000  00000000  0004fcd8  2**0
+ 18 .debug_str    000d2d25  00000000  00000000  0004fcd6  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  001229f1  2**0
+ 19 .comment      00000043  00000000  00000000  001229fb  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  000049e4  00000000  00000000  00122a34  2**2
+ 20 .debug_frame  000049e4  00000000  00000000  00122a40  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 00000069  00000000  00000000  00127418  2**0
+ 21 .debug_line_str 00000075  00000000  00000000  00127424  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -1461,11 +1461,11 @@ __STATIC_FORCEINLINE void __disable_irq(void)
  80010ee:	bd80      	pop	{r7, pc}
 
 080010f0 <TimerISR>:
-task tasks[1];
-const unsigned long tasksPeriodGCD = 500;
-const unsigned char tasksNum = 1;
-const unsigned long periodTemp = 2000;
+const unsigned char tasksNum = 1; // change to number of tasks until it gets 4.
+const unsigned long periodTemp = 2000; // temp period
 
+
+//timer ISR that is called in the main uses timer isr as global interrupt.
 void TimerISR() {
  80010f0:	b590      	push	{r4, r7, lr}
  80010f2:	b083      	sub	sp, #12
@@ -1554,6 +1554,7 @@ void TimerISR() {
 
 08001188 <TempSensor>:
 
+// this is the temperature sensor state machine
 int TempSensor(int state)
 {
  8001188:	b580      	push	{r7, lr}
@@ -2387,7 +2388,7 @@ int main(void)
   MX_TIM7_Init();
  8001770:	f000 f8e0 	bl	8001934 <MX_TIM7_Init>
   /* USER CODE BEGIN 2 */
-  HAL_TIM_Base_Start(&htim6); // setting up the timer
+  HAL_TIM_Base_Start(&htim6); // setting up the timer for dht11
  8001774:	4819      	ldr	r0, [pc, #100]	@ (80017dc <main+0xac>)
  8001776:	f001 fd57 	bl	8003228 <HAL_TIM_Base_Start>
   HAL_TIM_Base_Start_IT(&htim7); // interrupt timer
@@ -2413,11 +2414,11 @@ int main(void)
  8001794:	4b14      	ldr	r3, [pc, #80]	@ (80017e8 <main+0xb8>)
  8001796:	2200      	movs	r2, #0
  8001798:	701a      	strb	r2, [r3, #0]
-	          TimerISR();          // run scheduler in thread context (safe)
+	          TimerISR();          // run scheduler in thread context
  800179a:	f7ff fca9 	bl	80010f0 <TimerISR>
 	      }
 
-	      // Example: print queue every 2s
+	      // print queue every 2s
 	      if (HAL_GetTick() - lastPrint >= 2000) {
  800179e:	f000 fc03 	bl	8001fa8 <HAL_GetTick>
  80017a2:	4602      	mov	r2, r0
@@ -2958,6 +2959,7 @@ static void MX_GPIO_Init(void)
 08001ad0 <HAL_TIM_PeriodElapsedCallback>:
 
 /* USER CODE BEGIN 4 */
+// timer 7 gloabl interrupt right now it sets a flag for the main loop.
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
  8001ad0:	b480      	push	{r7}
@@ -3392,10 +3394,8 @@ void SysTick_Handler(void)
   /* USER CODE END SysTick_IRQn 0 */
   HAL_IncTick();
  8001cba:	f000 f961 	bl	8001f80 <HAL_IncTick>
-	  TimerISR();
-	  i = 0;
-  }
-  */
+  /* USER CODE BEGIN SysTick_IRQn 1 */
+
   /* USER CODE END SysTick_IRQn 1 */
 }
  8001cbe:	bf00      	nop
