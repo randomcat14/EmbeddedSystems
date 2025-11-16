@@ -1,2 +1,3 @@
-../Core/Src/Tasks.c:25:6:TimerISR	24	static
-../Core/Src/Tasks.c:37:5:TempSensor	88	static
+../Core/Src/Tasks.c:26:6:TimerISR	24	static
+../Core/Src/Tasks.c:38:5:TempSensor	88	static
+../Core/Src/Tasks.c:70:5:test1	72	static

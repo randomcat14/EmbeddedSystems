@@ -15,10 +15,11 @@ extern UART_HandleTypeDef huart2;
 
 // Actual definitions only here!
 Q4uc sharedQueue;
-task tasks[1];
+task tasks[2];
 const unsigned long tasksPeriodGCD = 500; // we will change timer 7 and this to divide evenly the periods
-const unsigned char tasksNum = 1; // change to number of tasks until it gets 4.
+const unsigned char tasksNum = 2; // change to number of tasks until it gets 4.
 const unsigned long periodTemp = 2000; // temp period
+const unsigned long periodTest = 500; // change to task 2 period you want must not be lower than GCD
 
 
 //timer ISR that is called in the main uses timer isr as global interrupt.
@@ -65,7 +66,24 @@ int TempSensor(int state)
     return state;
 }
 
-//task 1 will be fan with the voltage sensor and temp input from queue
+//task 1 will be fan with the voltage sensor and temp input from queue this is just a test
+int test1(int state)
+{
+	char buf[50];
+	switch(state)
+	{
+	case INIT1:
+		sprintf(buf, "Testing: INIT\n\r");
+		HAL_UART_Transmit(&huart2, (uint8_t*)buf, strlen(buf), HAL_MAX_DELAY);
+		state = PRINT;
+		break;
+	case PRINT:
+		sprintf(buf, "Testing: READ\n\r");
+		HAL_UART_Transmit(&huart2, (uint8_t*)buf, strlen(buf), HAL_MAX_DELAY);
+		break;
+	}
+	return state;
+}
 
 
 

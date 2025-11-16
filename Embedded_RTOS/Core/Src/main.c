@@ -75,16 +75,20 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-	// task 0 is the temperature reading
+	// task 1 is the temperature reading
 	tasks[0].state = INIT;
 	tasks[0].period = periodTemp;
 	tasks[0].elapsedTime = tasks[0].period;
 	tasks[0].TickFct = &TempSensor;
-	uint32_t lastPrint = 0;
+	//uint32_t lastPrint = 0;
 
 	Q4ucInit(&sharedQueue);
 
-	//tasks 1 is the fan [1] same as zybooks
+	//tasks 2 is the fan [1] same as zybooks change for actual task
+	tasks[1].state = INIT;
+	tasks[1].period = periodTest;
+	tasks[1].elapsedTime = tasks[1].period;
+	tasks[1].TickFct = &test1;
 
 
 
@@ -130,13 +134,15 @@ int main(void)
 	          TimerISR();          // run scheduler in thread context
 	      }
 
-	      // print queue every 2s
+	      // print queue every 2s uncomment to see queue being pushed and popped
+	  /*
 	      if (HAL_GetTick() - lastPrint >= 2000) {
 	          lastPrint = HAL_GetTick();
 	          Q4ucPrint(sharedQueue);
 	      }
+	      */
 
-	  //HAL_Delay(1000);
+	  //HAL_Delay(500);
   }
   /* USER CODE END 3 */
 }
