@@ -20,14 +20,15 @@ app.post("/api/send-spike-email", async (req, res) => {
       to: email,
       from: process.env.MAIL_FROM, 
       subject: "Pump Failure Warning!",
-      html: `
-    <h1>Pump Failure Warning!</h1>
-    <p>To On-Call Personnel: Your pump 3 is going to fail in 5 minutes.</p>
-    <p>Its current temperature is: 93.82 °F.</p>
-    <p>Please take any necessary precautions to mitigate damages.</p>
-    <p>Sincerely,<br>Warning Team</p>
-   `
-      
+      html: [
+        "<h1>Pump Failure Warning!</h1>",
+        "<p>",
+        "<p>To On-Call Personnel: Your pump 3 is going to fail in 2 minutes.</p>",
+        "<p>Its current temperature is: 72.64 °F.</p>",
+        "<p>Please take any necessary precautions to mitigate damages.</p>",
+        "<p><p>",
+        "<p>Sincerely,<br>Warning Team</p>"
+      ]
 
 
     });
