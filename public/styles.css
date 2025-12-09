@@ -1,7 +1,8 @@
 :root { font-family: system-ui, Arial, sans-serif; }
 
 .main-section {
-  max-width: 800px;
+  max-width: 1800px;
+
   margin: 10vh auto;
   padding: 2rem;
   border: 1px solid #1e8449;
@@ -24,6 +25,15 @@
   align-items: center;
 }
 
+.graphs{
+  display:flex;
+  flex-direction: row;
+  
+}
+.options{
+  display:flex;
+  flex-direction: row;
+}
 .header {
   display: flex;
   align-items: center;
@@ -39,11 +49,20 @@
   border: 1px solid #ddd;
   border-radius: 12px;
   padding: 20px;
-  width: 420px;
-  margin: 40px auto;
+  width: 1000px;
+
+  margin: 20px 10px;
   box-shadow: 0 6px 20px rgba(0,0,0,.08);
 }
-
+.graph-box {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 10px;
+  width: 1500px;
+  margin: 10px 10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.08);
+}
 .toggle-list {
   display: flex;
   flex-direction: column;
@@ -94,46 +113,3 @@
 input:checked + .slider { background-color: #2196F3; }
 input:checked + .slider:before { transform: translateX(26px); }
 
-#LogOut {
-  position: relative;
-  top: 1px;
-  left: 380px;
-  padding: 8px 16px;
-  border-radius: 6px;
-  background-color: #f44336;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-
-#LogOut:hover {
-  background-color: #d32f2f;
-}
-
-#LogIn {
-  position: relative;
-
-  padding: 8px 16px;
-  border-radius: 6px;
-  background-color: #28974d;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  margin-top: 20px;
-}
-
-
-#LogIn:hover {
-  background-color: #1e6636;
-}
-
-input {
-  padding: 8px 12px; 
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-  margin-bottom: 10px;
-}

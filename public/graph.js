@@ -3,7 +3,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const xValues = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24];
   const yValues = [7,8,8,9,9,9,10,11,14,14,15];
 
-  const ctx = document.getElementById('myChart');
+  const ctx = document.getElementById('FanGraph');
 
   new Chart(ctx, {
     type: "line",
@@ -29,3 +29,10 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+voltage sensor
+voltage sensor
+temperature sensor
+
+house_temp
+LED_volt
+fan_volt

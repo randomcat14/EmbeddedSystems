@@ -9,14 +9,14 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!e.target.checked) return; 
 
     try {
-      const res = await fetch("http://localhost:3000/api/send-spike-email", {
+      const res = await fetch("http://localhost:3000/api/send-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: userEmail })
       });
       const data = await res.json();
       if (data.ok) {
-        alert("Spike email sent!");
+        alert("Email sent!");
       } else {
         alert("Error: " + (data.error || "Failed to send"));
       }
@@ -25,4 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("Network error sending email.");
     }
   });
+});
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("/api/test-db");
 });

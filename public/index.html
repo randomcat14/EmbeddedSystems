@@ -10,15 +10,39 @@
 
 <body class="bg-page">
   
-
   <section class="main-section">
-    <button id = "LogOut" onclick="location.href='login.html'">LogOut</button>
+  
+  <section class="graphs">
+    <section class="graph-box">
+      <div class="header" in="graphs">
+        <h1>Fan</h1>
+      </div>
+      <canvas id="fanGraph" style="width:100%;max-width:600px"></canvas>
+      
+      </section>
+      <section class="graph-box">
+        <div class="header">
+          <h1>LED</h1>
+        </div>
+        <canvas id="LEDGraph" style="width:100%;max-width:600px"></canvas>
+      </section>
+      <section class="graph-box">
+        <div class="header">
+          <h1>House Temperature</h1>
+        </div>
+        <canvas id="TemperatureGraph" style="width:100%;max-width:600px"></canvas>
+      </section>
+  </section>
 
+  <section class="options">
     <section class="box">
       <div class="header">
-        <h1>Your House</h1>
+        <h1>Set the color of your LEDs</h1>
       </div>
-      <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+      <div>
+        <input type="color" id="LEDColor" name="LEDColor" />
+      </div>
+      
     </section>
 
     <section class="box">
@@ -36,10 +60,14 @@
         </div>
       </div>
     </section>
-    <section class="box">
-      <div class="header">
-        <h1>Notification Settings</h1>
-      </div>
+
+
+
+<section class="box">
+  <div class="header">
+    <h1>Notification Settings</h1>
+  </div>
+
 
 <div class="toggle-item">
   <label class="switch">
@@ -51,35 +79,46 @@
 
         <div class="toggle-item">
           <label class="switch">
-            <input type="checkbox">
+            <input type="checkbox" id="TempTooHigh">
             <span class="slider round"></span>
           </label>
-          <span class="toggle-label">Temperature Warning</span>
+          <span class="toggle-label">SOMEBODY CALL 911 SHORTY FIRE BURNING IN THE DANCE FLOOR</span>
         </div>
 
         <div class="toggle-item">
           <label class="switch">
-            <input type="checkbox">
+            <input type="checkbox" id="TempTooLow">
             <span class="slider round"></span>
           </label>
-          <span class="toggle-label">Voltage Drop</span>
+          <span class="toggle-label">I am freezing</span>
         </div>
 
         <div class="toggle-item">
           <label class="switch">
-            <input type="checkbox">
+            <input type="checkbox" id="noSound">
             <span class="slider round"></span>
           </label>
-          <span class="toggle-label">System Alert</span>
+          <span class="toggle-label">No Sound</span>
+        </div>
+        <div class="toggle-item">
+          <label class="switch">
+            <input type="checkbox" id="noEmail">
+            <span class="slider round"></span>
+          </label>
+          <span class="toggle-label">No Email</span>
         </div>
       </div>
     </section>
   
-
+    </section>
   </section>
 
-  <script src="graph.js"></script>
+  <script src="fanGraph.js"></script>
+  <script src="LEDGraph.js"></script>
+  <script src="tempGraph.js"></script>
+
   <script src="enotif.js"></script>
+  <script src="psqlConnect.js"></script>
 </body>
 
 
