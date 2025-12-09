@@ -1,38 +1,31 @@
+  <button onclick="triggerWarning()">Trigger Warning</button>
 
-window.addEventListener("DOMContentLoaded", () => {
-  const xValues = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24];
-  const yValues = [7,8,8,9,9,9,10,11,14,14,15];
+      <div id="popup-overlay" class="hidden">
+        <div class="popup">
+          <h2>⚠ Pump Failure Warning</h2>
+          <p id="popup-text"></p>
+          <button onclick="closePopup()">Acknowledge</button>
+        </div>
+      </div>
+ <script>
+    function triggerWarning() {
+      document.getElementById("popup-text").textContent =
+        "Pump 3 is predicted to fail in 2 minutes.\nTemperature: 72.6°F";
+      document.getElementById("popup-overlay").classList.remove("hidden");
+    }
 
-  const ctx = document.getElementById('FanGraph');
+    function closePopup() {
+      document.getElementById("popup-overlay").classList.add("hidden");
+    }
 
-  new Chart(ctx, {
-    type: "line",
-    data: {
-      labels: xValues,
-      datasets: [{
-        fill: false,
-        lineTension: 0,
-        backgroundColor: "rgba(0,0,255,1.0)",
-        borderColor: "rgba(0,0,255,0.1)",
-        data: yValues
-      }]
-    },
-    options: {
-      plugins: {
-        legend: { display: false },
-        title: {
-          display: true,
-          text: "Voltage vs Time",
-          font: { size: 16 }
-        }
+    
+    function checkPumpStatus() {
+      let pumpFailing = true; 
+      if (pumpFailing) {
+        triggerWarning();
       }
     }
-  });
-});
-voltage sensor
-voltage sensor
-temperature sensor
 
-house_temp
-LED_volt
-fan_volt
+    
+    setInterval(checkPumpStatus, 2000);
+  </script>

@@ -15,10 +15,20 @@ export async function initDb() {
   console.log("ected to PostgreSQL");
 }
 
+// psqlConnect.js
 export async function getLatestPumpReading() {
   const sql = `
-    SELECT * 
-    FROM voltage_sensors;
+    SELECT  voltage1, voltage2, voltage3
+    FROM voltage_sensors
+
   `;
-  return client.query(sql);
+
+  const { rows } = await client.query(sql);
+
+ 
+  const v1 = rows.map(row => Number(row.voltage1));         // y for chart 1
+  const v3 = rows.map(row => Number(row.voltage2));         // y for chart 2
+  const v2 = rows.map(row => Number(row.voltage3));         // y for chart 3
+
+  return { v1, v2, v3 };
 }

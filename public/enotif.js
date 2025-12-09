@@ -1,5 +1,17 @@
-
+function hexToRGB(hex) {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  return [r, g, b];
+}
 document.addEventListener("DOMContentLoaded", () => {
+  const picker = document.getElementById("LEDColor");
+
+  picker.addEventListener("input", () => {
+    const [r, g, b] = hexToRGB(picker.value);
+    console.log("R:", r, "G:", g, "B:", b);
+  });
+
   const spikeToggle = document.getElementById("toggle-spike");
 
 

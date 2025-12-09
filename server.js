@@ -37,16 +37,12 @@ initDb()
   .catch((err) => {
     console.error("Failed to initialize DB, server not started.");
   });
-app.get("/api/test-db", async (_, res) => {
+
+app.get("/api/db-test", async (_, res) => {
   try {
-    const result = await getLatestPumpReading();
-
-    console.log(result.rows);
-
-    return res.json({
-      ok: true,
-      data: result.rows, // array of rows
-    });
+    const data = await getLatestPumpReading(); 
+    // data = { timestamps, v0, v1, v2 }
+    res.json({ ok: true, ...data });
   } catch (err) {
     console.error("DB test route error:", err);
     res.status(500).json({ ok: false, error: "DB test failed" });
